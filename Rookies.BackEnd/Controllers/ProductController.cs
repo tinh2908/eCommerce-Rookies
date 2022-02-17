@@ -97,7 +97,7 @@ namespace Rookies.BackEnd.Controllers
             ViewData["CategoryId"] = new SelectList(_context.Set<Category>(), "Id", "Id", product.CategoryId);
             return View(product);
         }
-
+        //[HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
