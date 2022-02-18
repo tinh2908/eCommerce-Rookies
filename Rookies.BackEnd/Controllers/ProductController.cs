@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Rookies.BackEnd.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,6 +22,7 @@ namespace Rookies.BackEnd.Controllers
         {
             _context = context;
         }
+        
         public async Task<IActionResult> Index()
         {
             var product = await _context.Product.ToListAsync();
@@ -48,7 +51,7 @@ namespace Rookies.BackEnd.Controllers
             return View();
         }
 
-        //[HttpGet]
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
