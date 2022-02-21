@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Rookies.BackEnd.Data.SeedData;
 using Rookies.BackEnd.Models;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,11 @@ namespace Rookies.BackEnd.Data
         }
         public DbSet<Rookies.BackEnd.Models.Category> Category { get; set; }
         public DbSet<Rookies.BackEnd.Models.Product> Product { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.SeedProductData();
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -16,7 +16,16 @@ namespace Rookies.BackEnd.Data.SeedData
                 {
                     Id = 1,
                     Name = "Test Product 1",
+                    Price = 10000,
                     Description = "2022 Product",
+                    CreatedDate = DateTime.Now
+                },
+                new Product
+                {
+                    Id = 2,
+                    Name = "Test Product 2",
+                    Price = 20000,
+                    Description = "2021 Product",
                     CreatedDate = DateTime.Now
                 });
         }

@@ -9,6 +9,7 @@ using Rookies.BackEnd.Data;
 using Rookies.BackEnd.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Rookies.ShareClassdLibrary;
 
 namespace Rookies.BackEnd.Controllers
 {
@@ -21,6 +22,32 @@ namespace Rookies.BackEnd.Controllers
         public ProductController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        [HttpGet("{id}")]
+        //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
+        public async Task<ActionResult<ProductVM>> GetProduct(int id)
+        {
+            var product = await _context
+                                .Product
+                                .Where(x => x.Id == id)
+                                .FirstOrDefaultAsync();
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var productVM = new ProductVM
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                CreatedDate = product.CreatedDate
+            };
+
+            return productVM;
         }
         //    [HttpGet]
         //    public async Task<IActionResult> GetProduct()
