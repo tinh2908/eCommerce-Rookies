@@ -44,7 +44,8 @@ namespace Rookies.BackEnd.Controllers
                 Name = product.Name,
                 Price = product.Price,
                 Description = product.Description,
-                CreatedDate = product.CreatedDate
+                CreatedDate = product.CreatedDate,
+                CategoryId = product.CategoryId
             };
 
             return productVM;

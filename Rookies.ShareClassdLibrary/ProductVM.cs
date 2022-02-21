@@ -10,5 +10,6 @@ namespace Rookies.ShareClassdLibrary
         public int Price { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public int CategoryId { get; set; }
     }
 }
