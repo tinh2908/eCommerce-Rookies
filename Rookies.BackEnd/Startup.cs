@@ -35,6 +35,7 @@ namespace Rookies.BackEnd
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllers();
+            services.AddRazorPages();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "eCommerce-Rookies", Version = "v1" });
@@ -61,7 +62,10 @@ namespace Rookies.BackEnd
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
