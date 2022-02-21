@@ -21,6 +21,7 @@ namespace Rookies.BackEnd.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.SeedProductData();
+            modelBuilder.SeedCategoryData();
             base.OnModelCreating(modelBuilder);
         }
     }

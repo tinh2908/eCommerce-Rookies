@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Rookie.CustomerSite.Extensions.ServiceCollection;
+using Rookies.CustomerSite.Extensions.ServiceCollection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +25,12 @@ namespace Rookies.CustomerSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddHttpContextAccessor();
+            services.AddCustomHttpClient(Configuration);
+            services.AddServices();
+            services.AddRazorPages();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddControllersWithViews();
-            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +58,7 @@ namespace Rookies.CustomerSite
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

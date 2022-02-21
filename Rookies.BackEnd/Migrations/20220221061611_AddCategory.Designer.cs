@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rookies.BackEnd.Data;
 
 namespace Rookies.BackEnd.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220221061611_AddCategory")]
+    partial class AddCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,20 +173,6 @@ namespace Rookies.BackEnd.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Category");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Test Category 1",
-                            Type = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Test Category 2",
-                            Type = 1
-                        });
                 });
 
             modelBuilder.Entity("Rookies.BackEnd.Models.Product", b =>
@@ -220,8 +208,8 @@ namespace Rookies.BackEnd.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 21, 14, 5, 52, 370, DateTimeKind.Local).AddTicks(7755),
+                            CategoryId = 0,
+                            CreatedDate = new DateTime(2022, 2, 21, 13, 16, 10, 623, DateTimeKind.Local).AddTicks(4669),
                             Description = "2022 Product",
                             Name = "Test Product 1",
                             Price = 10000,
@@ -230,8 +218,8 @@ namespace Rookies.BackEnd.Migrations
                         new
                         {
                             Id = 2,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 21, 14, 5, 52, 371, DateTimeKind.Local).AddTicks(4119),
+                            CategoryId = 0,
+                            CreatedDate = new DateTime(2022, 2, 21, 13, 16, 10, 624, DateTimeKind.Local).AddTicks(1365),
                             Description = "2021 Product",
                             Name = "Test Product 2",
                             Price = 20000,

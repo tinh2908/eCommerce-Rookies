@@ -18,7 +18,8 @@ namespace Rookies.BackEnd.Data.SeedData
                     Name = "Test Product 1",
                     Price = 10000,
                     Description = "2022 Product",
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    CategoryId = 1
                 },
                 new Product
                 {
@@ -26,7 +27,8 @@ namespace Rookies.BackEnd.Data.SeedData
                     Name = "Test Product 2",
                     Price = 20000,
                     Description = "2021 Product",
-                    CreatedDate = DateTime.Now
+                    CreatedDate = DateTime.Now,
+                    CategoryId = 1
                 });
         }
     }

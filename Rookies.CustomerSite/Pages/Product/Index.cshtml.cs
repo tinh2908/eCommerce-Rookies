@@ -39,8 +39,8 @@ namespace Rookies.CustomerSite.Pages.Product
                 Page = pageIndex ?? 1,
                 Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
             };
-            var pagedBrands = await _productService.GetProductAsync(productCriteriaDto);
-            Products = _mapper.Map<PagedResponseVM<ProductVM>>(pagedBrands);
+            var pageProducts = await _productService.GetProductAsync(productCriteriaDto);
+            Products = _mapper.Map<PagedResponseVM<ProductVM>>(pageProducts);
         }
     }
 }
