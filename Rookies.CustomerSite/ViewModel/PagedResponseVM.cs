@@ -10,7 +10,7 @@ namespace Rookie.CustomerSite.ViewModel
 
         public int TotalPages { get; set; }
 
-        public IEnumerable<TViewModel> Items { get; set; }
+        public IList<TViewModel> Items { get; set; }
 
         public bool HasPreviousPage
         {

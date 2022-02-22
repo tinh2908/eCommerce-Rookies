@@ -10,8 +10,8 @@
     <div class="form-actions no-color">
         <p>
             Find by name:
-            <input type="text" name="SearchString" value="@Model.Products.Search" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <input type="text" asp-for="Products.Search"/>
+            <input type="submit" class="btn btn-primary" /> |
             
             <a asp-page="./Index">Back to full List</a>
         </p>
@@ -33,7 +33,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    @*<tbody>
         @foreach (var item in Model.Products.Items)
         {
         <tr>
@@ -54,23 +54,23 @@
             </td>
         </tr>
         }
-    </tbody>
+    </tbody>*@
 </table>
 
 
-@{ var prevDisabled = !Model.Products.HasPreviousPage ? "disabled" : "";
-                var nextDisabled = !Model.Products.HasNextPage ? "disabled" : ""; }
+@{ var prevDisabled = !Model.Products.HasPreviousPage ? "disable" : "";
+                var nextDisabled = !Model.Products.HasNextPage ? "disable" : ""; }
 
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.Products.SortOrder"
-   asp-route-pageIndex="@(Model.Products.Page - 1)"
+   asp-route-pageIndex="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@Model.Products.Search"
    class="btn btn-primary @prevDisabled">
     Previous
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.Products.SortOrder"
-   asp-route-pageIndex="@(Model.Products.Page + 1)"
+   asp-route-pageIndex="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@Model.Products.Search"
    class="btn btn-primary @nextDisabled">
     Next

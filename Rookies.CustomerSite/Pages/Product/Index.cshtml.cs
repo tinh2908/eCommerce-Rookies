@@ -26,30 +26,27 @@ namespace Rookies.CustomerSite.Pages.Product
         {
             _productService = productService;
             _config = config;
-            _mapper = mapper;
+            _mapper = mapper;          
         }
-        [BindProperty]
+        //[BindProperty(SupportsGet = true)]
+        //public string SearchString { get; set; }
+        [BindProperty(SupportsGet = true)]
         public PagedResponseVM<ProductVM> Products { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public int PageIndex { get; set; }
 
-        public async Task OnGetAsync(string sortOrder,
-           string currentFilter, string searchString, int? pageIndex)
-        {      
+        public async Task OnGetAsync()
+        {
             var productCriteriaDto = new ProductCriteriaDto()
             {
-                Search = searchString,
-                SortOrder = SortOrderEnum.Accsending,
-                Page = pageIndex ?? 1,
-                Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
+                Search = Products.Search,
+                SortOrder = Products.SortOrder,
+                Page = PageIndex,
+                //Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
             };
-            var pageProducts = await _productService.GetProductAsync(productCriteriaDto);
-            Products = _mapper.Map<PagedResponseVM<ProductVM>>(pageProducts);
+            //var pageProducts = await _productService.GetProductAsync(productCriteriaDto);
+            //Products = _mapper.Map<PagedResponseVM<ProductVM>>(pageProducts);
         }
     }
-    public class Binding
-    {
-        public string sortOrder { get; set; }
-        public string searchString { get; set; }
-        public string currentFilter { get; set; }
-        public int? pageIndex { get; set; }
-    }
+    
 }

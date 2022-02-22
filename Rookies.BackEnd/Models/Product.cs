@@ -13,6 +13,7 @@ namespace Rookies.BackEnd.Models
         public int Price { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public bool IsDeleted { get; set; }
         public int CategoryId { get; set; }
         public virtual List<Category> Categories { get; set; }
 

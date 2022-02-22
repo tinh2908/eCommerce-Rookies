@@ -2,7 +2,7 @@
 
 namespace Rookies.ShareClassdLibrary
 {
-    public class ProductVM
+    public class ProductVM 
     {
         public int Id { get; set; }
         public string Name { get; set; }

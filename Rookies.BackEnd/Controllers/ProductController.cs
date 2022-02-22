@@ -40,7 +40,8 @@ namespace Rookies.BackEnd.Controllers
             CancellationToken cancellationToken)
         {
             var productQuery = _context
-                                .Product                         
+                                .Product
+                                .Where(x => !x.IsDeleted)
                                 .AsQueryable();
             productQuery = ProductFilter(productQuery, productCriteriaDto);
 
@@ -68,7 +69,7 @@ namespace Rookies.BackEnd.Controllers
         {
             var product = await _context
                                 .Product
-                                .Where(x => x.Id == id)
+                                .Where(x => !x.IsDeleted && x.Id == id)
                                 .FirstOrDefaultAsync();
 
             if (product == null)
