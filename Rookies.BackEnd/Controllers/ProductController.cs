@@ -10,6 +10,12 @@ using Rookies.BackEnd.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Rookies.ShareClassdLibrary;
+using Rookies.ShareClassdLibrary.Dto.Product;
+using Rookies.ShareClassdLibrary.Enum;
+using Rookies.ShareClassdLibrary.Dto;
+using AutoMapper;
+using System.Threading;
+using Rookies.BackEnd.Extension;
 
 namespace Rookies.BackEnd.Controllers
 {
@@ -18,10 +24,42 @@ namespace Rookies.BackEnd.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ProductController(ApplicationDbContext context)
+        public ProductController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        //[AllowAnonymous]
+        //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
+        public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProducts(
+            [FromQuery] ProductCriteriaDto productCriteriaDto,
+            CancellationToken cancellationToken)
+        {
+            var productQuery = _context
+                                .Product                         
+                                .AsQueryable();
+            productQuery = ProductFilter(productQuery, productCriteriaDto);
+
+            var pagedProduct = await productQuery
+                                .AsNoTracking()
+                                .PaginateAsync(productCriteriaDto, cancellationToken);
+
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(pagedProduct.Items);
+            return new PagedResponseDto<ProductDto>
+            {
+                CurrentPage = pagedProduct.CurrentPage,
+                TotalPages = pagedProduct.TotalPages,
+                TotalItems = pagedProduct.TotalItems,
+                Search = productCriteriaDto.Search,
+                SortColumn = productCriteriaDto.SortColumn,
+                SortOrder = productCriteriaDto.SortOrder,
+                Limit = productCriteriaDto.Limit,
+                Items = productDto
+            };
         }
 
         [HttpGet("{id}")]
@@ -49,6 +87,27 @@ namespace Rookies.BackEnd.Controllers
             };
 
             return productVM;
+        }
+
+        private IQueryable<Product> ProductFilter(
+           IQueryable<Product> productQuery,
+           ProductCriteriaDto productCriteriaDto)
+        {
+            if (!String.IsNullOrEmpty(productCriteriaDto.Search))
+            {
+                productQuery = productQuery.Where(b =>
+                    b.Name.Contains(productCriteriaDto.Search));
+            }
+
+            if (productCriteriaDto.CategoryId != null &&
+                productCriteriaDto.CategoryId.Count() > 0 &&
+               !productCriteriaDto.CategoryId.Any(x => x == (int)ProductCategoryEnum.All))
+            {
+                productQuery = productQuery.Where(x =>
+                    productCriteriaDto.CategoryId.Any(t => t == x.CategoryId));
+            }
+
+            return productQuery;
         }
         //    [HttpGet]
         //    public async Task<IActionResult> GetProduct()

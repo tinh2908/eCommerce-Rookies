@@ -28,10 +28,12 @@ namespace Rookies.CustomerSite.Pages.Product
             _config = config;
             _mapper = mapper;
         }
+        [BindProperty]
         public PagedResponseVM<ProductVM> Products { get; set; }
+
         public async Task OnGetAsync(string sortOrder,
            string currentFilter, string searchString, int? pageIndex)
-        {
+        {      
             var productCriteriaDto = new ProductCriteriaDto()
             {
                 Search = searchString,
@@ -42,5 +44,12 @@ namespace Rookies.CustomerSite.Pages.Product
             var pageProducts = await _productService.GetProductAsync(productCriteriaDto);
             Products = _mapper.Map<PagedResponseVM<ProductVM>>(pageProducts);
         }
+    }
+    public class Binding
+    {
+        public string sortOrder { get; set; }
+        public string searchString { get; set; }
+        public string currentFilter { get; set; }
+        public int? pageIndex { get; set; }
     }
 }

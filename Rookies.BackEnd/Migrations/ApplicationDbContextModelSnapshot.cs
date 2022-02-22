@@ -221,7 +221,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 21, 14, 5, 52, 370, DateTimeKind.Local).AddTicks(7755),
+                            CreatedDate = new DateTime(2022, 2, 22, 9, 52, 41, 361, DateTimeKind.Local).AddTicks(4340),
                             Description = "2022 Product",
                             Name = "Test Product 1",
                             Price = 10000,
@@ -231,7 +231,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 21, 14, 5, 52, 371, DateTimeKind.Local).AddTicks(4119),
+                            CreatedDate = new DateTime(2022, 2, 22, 9, 52, 41, 362, DateTimeKind.Local).AddTicks(517),
                             Description = "2021 Product",
                             Name = "Test Product 2",
                             Price = 20000,
