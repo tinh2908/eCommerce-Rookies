@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,8 +8,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Rookies.Backend.IdentityServer;
+using Rookies.Backend.Security.Authorization.Handlers;
+using Rookies.Backend.Security.Authorization.Requirements;
 using Rookies.BackEnd.Data;
 using Rookies.BackEnd.Models;
+using Rookies.ShareClassdLibrary.Constants;
 using System;
 using System.Collections.Generic;
 
@@ -34,11 +39,83 @@ namespace Rookies.BackEnd
             services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = "/CustomAuthentication/Login";
+            });
+
             services.AddControllers();
             services.AddRazorPages();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "eCommerce-Rookies", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.OAuth2,
+                    Flows = new OpenApiOAuthFlows
+                    {
+                        AuthorizationCode = new OpenApiOAuthFlow
+                        {
+                            TokenUrl = new Uri("/connect/token", UriKind.Relative),
+                            AuthorizationUrl = new Uri("/connect/authorize", UriKind.Relative),
+                            Scopes = new Dictionary<string, string> { { "rookieshop.api", "eCommerce-Rookies" } }
+                        },
+                    },
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+                        },
+                        new List<string>{ "rookieshop.api" }
+                    }
+                });
+            });
+
+            services.AddIdentityServer(options =>
+            {
+                options.Events.RaiseErrorEvents = true;
+                options.Events.RaiseInformationEvents = true;
+                options.Events.RaiseFailureEvents = true;
+                options.Events.RaiseSuccessEvents = true;
+                options.EmitStaticAudienceClaim = true;
+            })
+              .AddInMemoryIdentityResources(IdentityServerConfig.IdentityResources)
+              .AddInMemoryApiScopes(IdentityServerConfig.ApiScopes)
+              .AddInMemoryClients(IdentityServerConfig.Clients)
+              .AddAspNetIdentity<User>()
+              .AddProfileService<CustomProfileService>()
+              .AddDeveloperSigningCredential(); // not recommended for production - you need to store your key material somewhere secure
+
+            services.AddAuthentication()
+                .AddLocalApi("Bearer", option =>
+                {
+                    option.ExpectedScope = "rookieshop.api";
+                });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(SecurityConstants.BEARER_POLICY, policy =>
+                {
+                    policy.AddAuthenticationSchemes("Bearer");
+                    policy.RequireAuthenticatedUser();
+                });
+
+                options.AddPolicy(SecurityConstants.ADMIN_ROLE_POLICY, policy =>
+                    policy.Requirements.Add(new AdminRoleRequirement()));
+            });
+            services.AddSingleton<IAuthorizationHandler, AdminRoleHandler>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigins",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
             });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
@@ -51,8 +128,13 @@ namespace Rookies.BackEnd
             {
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "eCommerce-Rookies v1"));
+               
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
@@ -60,8 +142,17 @@ namespace Rookies.BackEnd
             app.UseCors("AllowOrigins");
             app.UseRouting();
 
+            app.UseIdentityServer();
             app.UseAuthorization();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.OAuthClientId("swagger");
+                c.OAuthClientSecret("secret");
+                c.OAuthUsePkce();
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "eCommerce-Rookies v1");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
