@@ -1,7 +1,11 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Rookies.BackEnd.Data.SeedData;
+using Rookies.BackEnd.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +17,27 @@ namespace Rookies.BackEnd
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var serviceProvider = scope.ServiceProvider;
+
+                try
+                {
+                    var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
+                    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                    IdentityDataInitializer.SeedRoles(roleManager);
+                    IdentityDataInitializer.SeedUsers(userManager);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
