@@ -2,6 +2,6 @@
 {
     public static class EndpointConstants
     {
-        public static string GET_PRODUCTS = "api/products";
+        public static string GET_PRODUCTS = "api/product";
     }
 }

@@ -33,7 +33,7 @@ namespace Rookies.BackEnd.Controllers
         }
 
         [HttpGet]
-        //[AllowAnonymous]
+        [AllowAnonymous]
         //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
         public async Task<ActionResult<PagedResponseDto<ProductDto>>> GetProducts(
             [FromQuery] ProductCriteriaDto productCriteriaDto,
@@ -64,6 +64,7 @@ namespace Rookies.BackEnd.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
         public async Task<ActionResult<ProductVM>> GetProduct(int id)
         {

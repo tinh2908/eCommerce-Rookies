@@ -40,6 +40,7 @@ namespace Rookies.BackEnd
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "eCommerce-Rookies", Version = "v1" });
             });
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +56,8 @@ namespace Rookies.BackEnd
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
+            app.UseCors("AllowOrigins");
             app.UseRouting();
 
             app.UseAuthorization();

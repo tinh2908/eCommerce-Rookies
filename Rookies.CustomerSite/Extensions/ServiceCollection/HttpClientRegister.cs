@@ -16,14 +16,14 @@ namespace Rookies.CustomerSite.Extensions.ServiceCollection
             var configureClient = new Action<IServiceProvider, HttpClient>(async (provider, client) =>
             {
                 var httpContextAccessor = provider.GetRequiredService<IHttpContextAccessor>();
-                var accessToken = await httpContextAccessor
-                                            .HttpContext
-                                            .GetTokenAsync(RequestConstants.ACCESS_TOKEN);
+                //var accessToken = await httpContextAccessor
+                //                            .HttpContext
+                //                            .GetTokenAsync(RequestConstants.ACCESS_TOKEN);
 
                 client.BaseAddress = new Uri(config[ConfigurationConstants.BACK_END_ENDPOINT]);
 
-                client.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue(RequestConstants.BEARER, accessToken);
+                //client.DefaultRequestHeaders.Authorization =
+                //    new AuthenticationHeaderValue(RequestConstants.BEARER, accessToken);
             });
 
             services.AddHttpClient(ServiceConstants.BACK_END_NAMED_CLIENT, configureClient);

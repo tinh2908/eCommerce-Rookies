@@ -42,10 +42,10 @@ namespace Rookies.CustomerSite.Pages.Product
                 Search = Products.Search,
                 SortOrder = Products.SortOrder,
                 Page = PageIndex,
-                //Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
+                Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
             };
-            //var pageProducts = await _productService.GetProductAsync(productCriteriaDto);
-            //Products = _mapper.Map<PagedResponseVM<ProductVM>>(pageProducts);
+            var pageProducts = await _productService.GetProductAsync(productCriteriaDto);
+            Products = _mapper.Map<PagedResponseVM<ProductVM>>(pageProducts);
         }
     }
     

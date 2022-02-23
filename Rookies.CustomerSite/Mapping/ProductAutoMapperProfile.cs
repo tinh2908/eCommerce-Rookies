@@ -13,7 +13,7 @@ namespace Rookie.CustomerSite.Mapping
         {  
             CreateMap<ProductDto, ProductVM>().ReverseMap();
             CreateMap<BaseQueryCriteriaDto, BaseQueryCriteriaVM>().ReverseMap();  
-            CreateMap<PagedResponseDto<ProductDto>, PagedResponseVM<ProductDto>>().ReverseMap();
+            CreateMap<PagedResponseDto<ProductDto>, PagedResponseVM<ProductVM>>().ReverseMap();
         }  
     }
 }
