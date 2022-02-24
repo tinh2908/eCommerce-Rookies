@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Rookie.CustomerSite.ViewModel;
-using Rookies.ShareClassdLibrary;
+using Rookie.CustomerSite.ViewModel.Product;
 using Rookies.ShareClassdLibrary.Constants;
 using Rookies.ShareClassdLibrary.Dto.Product;
 using Rookies.ShareClassdLibrary.Enum;
