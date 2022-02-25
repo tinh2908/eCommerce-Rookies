@@ -1,0 +1,21 @@
+﻿@page
+@model Rookies.CustomerSite.Pages.Category.IndexModel
+@{
+    ViewData["Title"] = "Categories";
+}
+<table>
+   
+    <tbody>
+        @foreach (var item in Model.Categories)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    <a asp-page="./Detail" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Rookies.BackEnd.Data;
 
 namespace Rookies.BackEnd.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220224043846_Bug")]
+    partial class Bug
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,20 +224,9 @@ namespace Rookies.BackEnd.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 316, DateTimeKind.Local).AddTicks(4675),
-                            Description = "2021 Product",
-                            IsDeleted = false,
-                            Name = "Test Product 1",
-                            Price = 10000,
-                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
                             Id = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(420),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 41, DateTimeKind.Local).AddTicks(9989),
                             Description = "2022 Product",
                             IsDeleted = false,
                             Name = "Test Product 2",
@@ -246,7 +237,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 3,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(435),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4454),
                             Description = "2023 Product",
                             IsDeleted = false,
                             Name = "Test Product 3",
@@ -257,7 +248,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(437),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4466),
                             Description = "2024 Product",
                             IsDeleted = false,
                             Name = "Test Product 4",
@@ -268,7 +259,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 5,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(439),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4468),
                             Description = "2025 Product",
                             IsDeleted = false,
                             Name = "Test Product 5",
@@ -279,7 +270,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 6,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(440),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4469),
                             Description = "2026 Product",
                             IsDeleted = false,
                             Name = "Test Product 6",
@@ -290,7 +281,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 7,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(441),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4471),
                             Description = "2027 Product",
                             IsDeleted = false,
                             Name = "Test Product 7",
@@ -301,7 +292,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 8,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(442),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4472),
                             Description = "2028 Product",
                             IsDeleted = false,
                             Name = "Test Product 8",
@@ -312,7 +303,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 9,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(444),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4473),
                             Description = "2029 Product",
                             IsDeleted = false,
                             Name = "Test Product 9",
@@ -323,7 +314,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 10,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(445),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4474),
                             Description = "2030 Product",
                             IsDeleted = false,
                             Name = "Test Product 10",
@@ -334,7 +325,7 @@ namespace Rookies.BackEnd.Migrations
                         {
                             Id = 11,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 2, 24, 11, 41, 42, 317, DateTimeKind.Local).AddTicks(446),
+                            CreatedDate = new DateTime(2022, 2, 24, 11, 38, 46, 42, DateTimeKind.Local).AddTicks(4475),
                             Description = "2031 Product",
                             IsDeleted = false,
                             Name = "Test Product 11",
