@@ -1,8 +1,9 @@
 ﻿@page
-@model Rookies.CustomerSite.Pages.Category.ProductByCateModel
+@model Rookies.CustomerSite.Pages.Product.ProductByCateModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "ProductByCate";
+    Layout = "_Layout";
 }
 <div class="row">
     @foreach (var item in Model.Product)
@@ -10,7 +11,7 @@
         <div class="col-6 col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: 25px">
             <div class="card">
                 <div class="card-header">
-                    <a class="card-title" asp-page="./Product/Detail" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
+                    <a class="card-title" asp-page="./Detail" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
                 </div>
                 <div class="card-body">
                     <h3 class="card-text"> @Html.DisplayFor(modelItem => item.Price)</h3>

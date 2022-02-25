@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
 using Rookie.CustomerSite.ViewModel.Product;
 
-namespace Rookies.CustomerSite.Pages.Category
+namespace Rookies.CustomerSite.Pages.Product
 {
     public class ProductByCateModel : PageModel
     {
