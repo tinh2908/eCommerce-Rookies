@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Rookies.ShareClassdLibrary
+namespace Rookies.ShareClassdLibrary.Dto.ProductbyCate
 {
-    public class ProductbyCate
+    public class ProductbyCateDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

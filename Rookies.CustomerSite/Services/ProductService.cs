@@ -1,6 +1,7 @@
 ﻿using Rookies.ShareClassdLibrary.Constants;
 using Rookies.ShareClassdLibrary.Dto;
 using Rookies.ShareClassdLibrary.Dto.Product;
+using Rookies.ShareClassdLibrary.Dto.ProductbyCate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,15 @@ namespace Rookies.CustomerSite.Services
             response.EnsureSuccessStatusCode();
             var Product = await response.Content.ReadAsAsync<ProductDto>();
             return Product;
+        }
+
+        public async Task<IList<ProductbyCateDto>> GetProductByCateAsync(int cateid)
+        {
+            var client = _clientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
+            var response = await client.GetAsync($"{EndpointConstants.GET_CATEGORIES}\\{cateid}");
+            response.EnsureSuccessStatusCode();
+            var pagedCategories = await response.Content.ReadAsAsync<IList<ProductbyCateDto>>();
+            return pagedCategories;
         }
     }
 }

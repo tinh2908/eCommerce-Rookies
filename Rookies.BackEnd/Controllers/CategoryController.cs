@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rookies.BackEnd.Data;
-using Rookies.ShareClassdLibrary;
 using Rookies.ShareClassdLibrary.Dto.Category;
+using Rookies.ShareClassdLibrary.Dto.ProductbyCate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +27,8 @@ namespace Rookies.BackEnd.Controllers
         [HttpGet("{cateid}")]
         [AllowAnonymous]
         //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
-        public ActionResult<ProductbyCate> GetProductByCategory(int cateid)
+
+        public ActionResult<ProductbyCateDto> GetProductByCategory(int cateid)
         {
             var product = _context
                                 .Product
@@ -39,7 +40,7 @@ namespace Rookies.BackEnd.Controllers
                 return NotFound();
             }
 
-            var categoryDtos = _mapper.Map<IEnumerable<ProductbyCate>>(product);
+            var categoryDtos = _mapper.Map<IEnumerable<ProductbyCateDto>>(product);
 
             return Ok(categoryDtos);
         }

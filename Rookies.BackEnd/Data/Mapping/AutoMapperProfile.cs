@@ -3,7 +3,7 @@ using Rookies.BackEnd.Models;
 using Rookies.ShareClassdLibrary.Dto.Product;
 using Rookies.BackEnd.Helpers;
 using Rookies.ShareClassdLibrary.Dto.Category;
-using Rookies.ShareClassdLibrary;
+using Rookies.ShareClassdLibrary.Dto.ProductbyCate;
 
 namespace RookieShop.Backend.Data.Mapping
 {
@@ -13,7 +13,7 @@ namespace RookieShop.Backend.Data.Mapping
         {
             CreateMap<Product, ProductDto>();
             CreateMap<Category, CategoryDto>();
-            CreateMap<Product, ProductbyCate>();
+            CreateMap<Product, ProductbyCateDto>();
         }
     }
 }
