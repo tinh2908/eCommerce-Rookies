@@ -20,13 +20,12 @@ namespace Rookies.CustomerSite.Views.Shared.Components.Category
             _categoryService = categoryService;
             _mapper = mapper;
         }
-        [BindProperty(SupportsGet = true)]
-        public IList<CategoryVM> Categories { get; set; }
+        public IList<CategoryVM> CategoryVM { get; set; }
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var pageCategories = await _categoryService.GetCategoryAsync();
-            Categories = _mapper.Map<IList<CategoryVM>>(pageCategories);
-            return View(Categories);
+            CategoryVM = _mapper.Map<IList<CategoryVM>>(pageCategories);
+            return View(CategoryVM);
         }
     }
 }

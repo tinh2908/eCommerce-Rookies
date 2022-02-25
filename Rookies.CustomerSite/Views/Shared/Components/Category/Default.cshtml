@@ -1,11 +1,11 @@
-﻿@model Rookies.CustomerSite.Views.Shared.Components.Category.CategoryViewComponent
+﻿@model IList<Rookies.CustomerSite.ViewModel.Category.CategoryVM>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Categories";
 }
 <table>
     <tbody>
-        @foreach (var item in Model.Categories)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>
