@@ -19,6 +19,6 @@ namespace Rookies.BackEnd.Models
         public string Firstname { get; set; }
         [PersonalData]
         public string Lastname { get; set; }
-        public virtual List<Rating> Ratings { get; set; }
+        public virtual List<Rating> Rating { get; set; }
     }
 }

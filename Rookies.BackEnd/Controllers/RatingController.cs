@@ -24,21 +24,40 @@ namespace Rookies.BackEnd.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{ratingscore}")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
-        public async Task<ActionResult<RatingDto>> PostRating(int ratingscore, int productid, int userid)
+        //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
+        public ActionResult<RatingDto> GetRating(int id)
         {
-            var rating = new Rating()
+            var rating = _context
+                                .Rating
+                                .Where(x => x.Id == id)
+                                .AsQueryable();
+
+            if (rating == null)
             {
-                RatingScore = ratingscore,
-                ProductId = productid,
-                UserId = userid
-            };
+                return NotFound();
+            }
 
             var ratingDtos = _mapper.Map<IEnumerable<RatingDto>>(rating);
+
+            return Ok(ratingDtos);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult<RatingDto>> PostRating(int ratingscore, int productid)
+        {
+            var rating = new Rating
+            {
+                RatingScore = ratingscore,
+                ProductId = productid
+            };
             _context.Rating.Add(rating);
             await _context.SaveChangesAsync();
-            return Ok(ratingDtos);
+
+            return CreatedAtAction("GetRating", new { id = rating.Id }, 
+                new RatingDto { ProductId = rating.ProductId});
         }
     }
 }

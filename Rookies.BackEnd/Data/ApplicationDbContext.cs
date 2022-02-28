@@ -18,11 +18,12 @@ namespace Rookies.BackEnd.Data
         public DbSet<Rookies.BackEnd.Models.Category> Category { get; set; }
         public DbSet<Rookies.BackEnd.Models.Product> Product { get; set; }
         public DbSet<Rookies.BackEnd.Models.Rating> Rating { get; set; }
-
+        public DbSet<Rookies.BackEnd.Models.User> User { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.SeedProductData();
             modelBuilder.SeedCategoryData();
+            modelBuilder.SeedRatingData();
             base.OnModelCreating(modelBuilder);
         }
     }

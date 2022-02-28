@@ -17,6 +17,6 @@ namespace Rookies.BackEnd.Models
         public bool IsDeleted { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Categories { get; set; }
-        public virtual Rating Rating { get; set; }
+        public virtual List<Rating> Rating { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace Rookies.BackEnd.Controllers
         {
             var product = _context
                                 .Product
-                                .Where(x => !x.IsDeleted && x.CategoryId == cateid)
+                                .Where(x => x.CategoryId == cateid)
                                 .AsQueryable();
 
             if (product == null)
