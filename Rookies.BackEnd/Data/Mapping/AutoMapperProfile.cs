@@ -4,6 +4,7 @@ using Rookies.ShareClassdLibrary.Dto.Product;
 using Rookies.BackEnd.Helpers;
 using Rookies.ShareClassdLibrary.Dto.Category;
 using Rookies.ShareClassdLibrary.Dto.ProductbyCate;
+using Rookies.ShareClassdLibrary.Dto.Raing;
 
 namespace RookieShop.Backend.Data.Mapping
 {
@@ -14,6 +15,7 @@ namespace RookieShop.Backend.Data.Mapping
             CreateMap<Product, ProductDto>();
             CreateMap<Category, CategoryDto>();
             CreateMap<Product, ProductbyCateDto>();
+            CreateMap<Rating, RatingDto>();
         }
     }
 }

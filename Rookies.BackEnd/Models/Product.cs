@@ -16,7 +16,7 @@ namespace Rookies.BackEnd.Models
         public DateTime UpdatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public int CategoryId { get; set; }
-        public virtual List<Category> Categories { get; set; }
-
+        public virtual Category Categories { get; set; }
+        public virtual Rating Rating { get; set; }
     }
 }
