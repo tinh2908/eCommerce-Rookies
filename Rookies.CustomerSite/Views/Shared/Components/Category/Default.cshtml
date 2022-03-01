@@ -3,18 +3,26 @@
 @{
     ViewData["Title"] = "Categories";
 }
-<table>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    <a asp-page="/Product/ProductByCate" asp-route-cateid="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/menu.css" />
+</head>
+<body>
+    <div class="menu">
+        <table>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="col-6" asp-page="/Product/ProductByCate" asp-route-cateid="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

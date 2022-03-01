@@ -16,13 +16,13 @@ namespace Rookies.BackEnd.Data.SeedData
                new Category
                {
                    Id = 1,
-                   Name = "Test Category 1",
+                   Name = "Category 1",
                    Type = (int)ProductCategoryEnum.Normal
                },
                new Category
                {
                    Id = 2,
-                   Name = "Test Category 2",
+                   Name = "Category 2",
                    Type = (int)ProductCategoryEnum.Normal
                });
         }
