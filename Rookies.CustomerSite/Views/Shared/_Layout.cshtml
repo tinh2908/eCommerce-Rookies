@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Rookies.CustomerSite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -34,13 +36,18 @@
                 </div>
             </div>
         </nav>
-          <nav class="menu mb-4">
-            @await Component.InvokeAsync("Category")
-        </nav>
+        <div>
+            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple Menu</button>
+            <nav id="demo" class="menu mb-4 collapse">
+                @await Component.InvokeAsync("Category")
+            </nav>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
+            <button class="btn" onclick="topFunction()" id="myBtn" title="Go to top" style="float:right">
+            <i class="fa fa-arrow-up w3-margin-right"> To the top </i></button>
         </main>
     </div>
 

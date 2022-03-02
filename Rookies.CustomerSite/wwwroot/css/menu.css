@@ -10,11 +10,10 @@
 
 .menu {
     height: 100%;
-    width: 0;
+    width: 15%;
     position: fixed;
     z-index: 999;
-    top: 0;
-    left: 0;
+    background-color: #000000d6;
 }
 
 

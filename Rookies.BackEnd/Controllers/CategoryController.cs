@@ -24,6 +24,23 @@ namespace Rookies.BackEnd.Controllers
             _context = context;
             _mapper = mapper;
         }
+        [HttpGet]
+        [AllowAnonymous]
+        //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
+        public ActionResult<CategoryDto> GetCategories()
+        {
+            var category = _context
+                               .Category
+                               .AsQueryable();
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+            var categoryDtos = _mapper.Map<IEnumerable<CategoryDto>>(category);
+            return Ok(categoryDtos);
+        }
+
         [HttpGet("{cateid}")]
         [AllowAnonymous]
         //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
@@ -42,22 +59,6 @@ namespace Rookies.BackEnd.Controllers
 
             var categoryDtos = _mapper.Map<IEnumerable<ProductbyCateDto>>(product);
 
-            return Ok(categoryDtos);
-        }
-        [HttpGet]
-        [AllowAnonymous]
-        //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
-        public ActionResult<CategoryDto> GetCategories()
-        {
-            var category = _context
-                               .Category
-                               .AsQueryable();
-
-            if (category == null)
-            {
-                return NotFound();
-            }
-            var categoryDtos = _mapper.Map<IEnumerable<CategoryDto>>(category);
             return Ok(categoryDtos);
         }
     }

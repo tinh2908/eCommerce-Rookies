@@ -32,16 +32,16 @@ namespace Rookies.BackEnd.Controllers
             var rating = _context
                                 .Rating
                                 .Where(x => x.Id == id)
-                                .AsQueryable();
+                                .FirstOrDefault();
 
             if (rating == null)
             {
                 return NotFound();
             }
 
-            var ratingDtos = _mapper.Map<IEnumerable<RatingDto>>(rating);
+            var ratingDto = _mapper.Map<RatingDto>(rating);
 
-            return Ok(ratingDtos);
+            return Ok(ratingDto);
         }
 
         [HttpPost]
@@ -57,7 +57,7 @@ namespace Rookies.BackEnd.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetRating", new { id = rating.Id }, 
-                new RatingDto { ProductId = rating.ProductId});
+                new RatingDto { RatingScore = rating.RatingScore, ProductId = rating.ProductId});
         }
     }
 }
