@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Rookies.BackEnd.Data;
 using Rookies.BackEnd.Models;
-using Rookies.ShareClassdLibrary.Dto.Raing;
+using Rookies.ShareClassdLibrary.Dto.Rating;
 using System;
 using System.Collections.Generic;
 using System.Linq;

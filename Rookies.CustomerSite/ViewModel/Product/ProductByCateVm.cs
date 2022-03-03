@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Rookie.CustomerSite.ViewModel.Product
+namespace Rookies.CustomerSite.ViewModel.Product
 {
     public class ProductByCateVM
     {

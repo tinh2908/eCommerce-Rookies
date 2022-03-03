@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace Rookies.ShareClassdLibrary.Dto.Rating
+namespace Rookies.CustomerSite.ViewModel.Rating
 {
-    public class RatingDto
+    public class RatingVM
     {
         public int Id { get; set; }
         public int RatingScore { get; set; }

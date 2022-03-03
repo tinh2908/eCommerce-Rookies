@@ -1,6 +1,6 @@
 using AutoMapper;
 using Rookie.CustomerSite.ViewModel;
-using Rookie.CustomerSite.ViewModel.Product;
+using Rookies.CustomerSite.ViewModel.Product;
 using Rookies.ShareClassdLibrary.Dto.ProductbyCate;
 using Rookies.ShareClassdLibrary.Dto;
 using Rookies.ShareClassdLibrary.Dto.Product;

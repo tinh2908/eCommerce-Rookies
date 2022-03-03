@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="~/css/menu.css" />
 </head>
 <body>
-    <div class="menu">
+    <button type="button" class="menubutton" data-toggle="collapse" data-target="#demo">Simple Menu</button>
+    <div class="menu collapse" id="demo">
         <table>
             <tbody>
                 @foreach (var item in Model)

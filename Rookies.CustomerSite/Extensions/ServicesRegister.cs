@@ -16,6 +16,7 @@ namespace Rookie.CustomerSite.Extensions.ServiceCollection
         {
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IRatingService, RatingService>();
         }
     }
 }

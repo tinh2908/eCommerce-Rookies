@@ -4,6 +4,6 @@
     {
         public static string GET_PRODUCTS = "api/product";
         public static string GET_CATEGORIES = "api/category";
-        //public static string GET_PRODUCTSBYID = "api/productbyid";
+        public static string GET_RATING = "api/rating";
     }
 }
