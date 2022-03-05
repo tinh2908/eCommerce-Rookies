@@ -61,6 +61,36 @@ namespace Rookies.BackEnd.Controllers
 
             return Ok(categoryDtos);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutCategory(int id)
+        {
+            var category = await _context.Category.FindAsync(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+            _context.Category.Update(category);
+            await _context.SaveChangesAsync();
+
+            return Ok(category);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var category = await _context.Category.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            _context.Category.Update(category);
+            await _context.SaveChangesAsync();
+
+            return Ok(true);
+        }
     }
 
 }

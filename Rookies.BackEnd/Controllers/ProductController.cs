@@ -133,7 +133,6 @@ namespace Rookies.BackEnd.Controllers
                 return NotFound();
             }
 
-            //_context.Brands.Remove(brand);
             product.IsDeleted = true;
             _context.Product.Update(product);
             await _context.SaveChangesAsync();
