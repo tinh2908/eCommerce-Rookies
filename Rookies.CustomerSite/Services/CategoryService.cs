@@ -28,14 +28,5 @@ namespace Rookies.CustomerSite.Services
             var pagedCategories = await response.Content.ReadAsAsync<IList<CategoryDto>>();
             return pagedCategories;
         }
-
-        //public async Task<ProductDto> GetProductByIdAsync(int id)
-        //{
-        //    var client = _clientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
-        //    var response = await client.GetAsync($"{EndpointConstants.GET_PRODUCTS}\\{id}");
-        //    response.EnsureSuccessStatusCode();
-        //    var Product = await response.Content.ReadAsAsync<ProductDto>();
-        //    return Product;
-        //}
     }
 }

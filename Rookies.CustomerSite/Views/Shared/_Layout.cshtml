@@ -36,19 +36,71 @@
                 </div>
             </div>
         </nav>
-        <div class="mb-4 position-fixed">
+        <nav class="shadow mb-4 position-fixed">
             @await Component.InvokeAsync("Category")
-        </div>
+        </nav>
     </header>
     <div class="container min-vh-100">
         <main role="main" class="pb-3">
             @RenderBody()
-            <button class="btn" onclick="topFunction()" id="myBtn" title="Go to top" style="float:right">
-            <i class="fa fa-arrow-up w3-margin-right"> To the top </i></button>
+            <button class="btn" onclick="topFunction()" id="myBtn" title="Go to top">
+                <i class="fa fa-arrow-up w3-margin-right"> To the top </i>
+            </button>
         </main>
     </div>
+    <footer class="text-center text-lg-start">
 
-    <footer class="border-top footer text-muted">
+        <div class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Connect through social networks</span>
+            </div>
+            <!-- Right -->
+            <div>
+                <a href="https://fb.com/" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.google.com/" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </div>
+        <div>
+            <div class="container text-center text-md-start">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-5">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-building me-3"></i> Online clothing
+                        </h6>
+                        <p>
+                            in development since 2021.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-5">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Contact
+                        </h6>
+                        <p><i class="fas fa-home me-3"></i> District 6, HCM City, Vietnam</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            tinhttgcs18834@fpt.edu.vn
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 093 210 6335</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </div>
         <div class="container">
             &copy; 2022 - Rookies.CustomerSite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

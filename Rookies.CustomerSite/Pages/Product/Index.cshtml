@@ -18,41 +18,6 @@
     </div>
 </form>
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                <a asp-page="./Index" asp-route-sortOrder="id"
-                   asp-route-currentFilter="@Model.Products.Search">
-                    @Html.DisplayNameFor(model => model.Products.Items.FirstOrDefault().Id)
-                </a>
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Products.Items.FirstOrDefault().Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Products.Items)
-        {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                <a asp-page="./Detail" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
 <div class="row">
     @foreach (var item in Model.Products.Items) {
         <div class="col-6 col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: 25px">

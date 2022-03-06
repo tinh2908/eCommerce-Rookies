@@ -2,6 +2,7 @@
 using Rookies.ShareClassdLibrary.Dto;
 using Rookies.ShareClassdLibrary.Dto.Product;
 using Rookies.ShareClassdLibrary.Dto.ProductbyCate;
+using RookieShop.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,26 @@ namespace Rookies.CustomerSite.Services
             response.EnsureSuccessStatusCode();
             var pagedCategories = await response.Content.ReadAsAsync<IList<ProductbyCateDto>>();
             return pagedCategories;
+        }
+
+        public async Task<bool> UpdateProduct(ProductDto productDto)
+        {
+            var productCreateRequest = new ProductCreateRequest
+            {
+                Name = productDto.Name
+            };
+
+            var content = new MultipartFormDataContent();
+            content.Add(new StringContent(productDto.Name), "Name");
+
+            var client = _clientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
+            var res = await client.PutAsync(
+                                $"{EndpointConstants.GET_PRODUCTS}\\{productDto.Id}",
+                                content);
+
+            res.EnsureSuccessStatusCode();
+
+            return await Task.FromResult(true);
         }
     }
 }

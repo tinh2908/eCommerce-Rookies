@@ -10,5 +10,5 @@ public interface IProductService
     Task<PagedResponseDto<ProductDto>> GetProductAsync(ProductCriteriaDto productCriteriaDto);
     Task<ProductDto> GetProductByIdAsync(int id);
     Task<IList<ProductbyCateDto>> GetProductByCateAsync(int cateid);
-    //Task<bool> UpdateProduct(ProductDto product);
+    Task<bool> UpdateProduct(ProductDto product);
 }

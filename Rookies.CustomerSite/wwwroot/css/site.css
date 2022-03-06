@@ -59,14 +59,21 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    height: 100%;
+    background-image: url('../../../../Image/img/background-two-side-red-vector-1740195.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
+  background-color: #a9a9a9ba;
   line-height: 60px; /* Vertically center the text there */
 }
 
@@ -84,6 +91,7 @@ body {
     padding: 15px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
     font-size: 18px; /* Increase font size */
+    float: right;
 }
 
     #myBtn:hover {

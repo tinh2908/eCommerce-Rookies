@@ -1,9 +1,78 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/Home.css" />
+</head>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <img class="container-fluid" />
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<body>
+    <div class="text-center">
+        <header class="page-section cta">
+            <h1 class="w3-xxlarge font-weight-light"><b>Welcome to my website</b></h1>
+        </header>
+        <section class="page-section cta">
+            <img class="img-fluid" src="/Image/img/clothblg.jpg">
+            <div class="container">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-upper">Feel the change</span>
+                        <span class="section-heading-lower">Everyday</span>
+                    </h2>
+                    <p class="mb-3">"Fashion is part of the daily air and it changes all the time, with all the events. You can even see the approaching of a revolution in clothes. You can see and feel everything in clothes." —Diana Vreeland</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="justify-content-center container" style="background-color: darkgrey"
+             data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+            <!-- Grid -->
+            <section class="row w3-padding w3-border" id="item-2">
+                <h3 class="card-title bg-faded"><b>Our store</b></h3>
+                <!-- About/Information menu -->
+                <div class="col-6">
+                    <!-- About Card -->
+                    <div class="w3-margin border">
+                        <div class="w3-container">
+                            <img src="~/Image/img/store.png" style="width:50%" class="w3-grayscale">
+                        </div>
+                    </div>
+                    <div class="border justify-content-center">
+                        <div class="w3-container">
+                            <p>
+                                Check out our local store
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 justify-content-lg-center">
+                    <!--Google map-->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.1060584525326!2d106.65024951533424!3d10.803188461651896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752e639bf01243%3A0x700ebdccb5a04987!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBHcmVlbndpY2ggVknhu4ZUIE5BTQ!5e0!3m2!1svi!2s!4v1629640502968!5m2!1svi!2s"
+                            class="embed-responsive-item container" style="border:0; width:100%; height:100%" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </section>
+
+            <section class="page-section cta" id="item-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-9 mx-auto">
+                            <div class="cta-inner bg-faded text-center rounded">
+                                <h2 class="section-heading mb-4">
+                                    <span class="section-heading-upper">Our Promise</span>
+                                    <span class="section-heading-lower">To You</span>
+                                </h2>
+                                <p class="mb-0">When you walk into our shop to start your day, we are dedicated to providing you with friendly service, a welcoming atmosphere, and above all else, excellent products made with the highest quality ingredients. If you are not satisfied, please let us know and we will do whatever we can to make things right!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
+</body>
+

@@ -50,6 +50,7 @@ namespace Rookies.BackEnd.Controllers
             var product = _context
                                 .Product
                                 .Where(x => x.CategoryId == cateid)
+                                //.Include(p => p.Categories)
                                 .AsQueryable();
 
             if (product == null)
