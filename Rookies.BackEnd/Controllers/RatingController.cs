@@ -46,12 +46,12 @@ namespace Rookies.BackEnd.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult<RatingDto>> PostRating(int ratingscore, int productid)
+        public async Task<ActionResult<RatingDto>> PostRating(RatingDto ratingDto)
         {
             var rating = new Rating
             {
-                RatingScore = ratingscore,
-                ProductId = productid
+                RatingScore = ratingDto.RatingScore,
+                ProductId = ratingDto.ProductId
             };
             _context.Rating.Add(rating);
             await _context.SaveChangesAsync();

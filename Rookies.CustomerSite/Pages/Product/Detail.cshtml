@@ -32,7 +32,11 @@
         </div>
     </dl>
 </div>
-
+<form asp-page="./Detail/" asp-route-id="@Model.Product.Id" method="post">
+    <input type="hidden" asp-for="Rating.ProductId" value="@Model.Product.Id" />
+    <input type="number" asp-for="Rating.RatingScore" />
+    <input type="submit" class="btn btn-primary" /> |
+</form>
 <div>
     <a class="btn btn-danger" href='javascript:history.go(-1)'>Go back</a>
 </div>
