@@ -9,20 +9,22 @@
     <link rel="stylesheet" href="~/css/menu.css" />
 </head>
 <body>
-    <button type="button" class="menubutton" data-toggle="collapse" data-target="#demo">Simple Menu</button>
-    <div class="menu collapse" id="demo">
-        <table>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            <a class="col-6" asp-page="/Product/ProductByCate" asp-route-cateid="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="menu">
+        <div class="menubutton" type="button" data-toggle="collapse" data-target="#demo">Simple Menu</div>
+        <div class="collapse" id="demo">
+            <table>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="col-6" asp-page="/Product/ProductByCate" asp-route-cateid="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
