@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
-import BrandFormContainer from "../BrandForm";
+import ProductFormContainer from "../ProductForm";
 
-const CreateBrandContainer = () => {
+const CreateProductContainer = () => {
 
   return (
     <div className='ml-5'>
       <div className='primaryColor text-title intro-x'>
-        Create New Brand
+        Create New Product
       </div>
 
       <div className='row'>
-        <BrandFormContainer />
+        <ProductFormContainer />
 
       </div>
 
@@ -19,4 +19,4 @@ const CreateBrandContainer = () => {
   );
 };
 
-export default CreateBrandContainer;
+export default CreateProductContainer;

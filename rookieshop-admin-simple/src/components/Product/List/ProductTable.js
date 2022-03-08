@@ -19,6 +19,7 @@ import { DisableProductRequest } from "../services/request"
 const columns= [
   { columnName: "id", columnValue: "Id" },
   { columnName: "name", columnValue: "Name" },
+  { columnName: "price", columnValue: "Price" },
   { columnName: "type", columnValue: "Type" }
 ];
 
@@ -129,6 +130,7 @@ const ProductTable = ({
           <tr key={index} className="" onClick={() => handleShowInfo(data.id)}>
             <td>{data.id}</td>
             <td>{data.name}</td>
+            <td>{data.price}</td>
             <td>{getProductTypeName(data.type)}</td>
 
             <td className="d-flex">

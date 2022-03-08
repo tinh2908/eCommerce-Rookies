@@ -39,6 +39,11 @@ const Info = ({ product, handleClose }) => {
             </div>
 
             <div className='row -intro-y'>
+              <div className='col-4'>price:</div>
+              <div>{product.price}</div>
+            </div>
+
+            <div className='row -intro-y'>
               <div className='col-4'>Type:</div>
               <div>{getProductTypeName(product.type)}</div>
             </div>

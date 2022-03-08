@@ -1,35 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { Redirect, useParams, useLocation } from 'react-router';
 
-import BrandForm from '../BrandForm';
+import ProductForm from '../ProductForm';
 
-const UpdateBrandContainer = () => {
-  const [brand, setBrand] = useState(undefined);
+const UpdateProductContainer = () => {
+  const [product, setProduct] = useState(undefined);
   const {state} = useLocation();
-  const { existBrand } = state; // Read values passed on state
+  const { existProduct } = state; // Read values passed on state
   
   useEffect(() => {
-    if (existBrand) {
-      setBrand({
-        id: existBrand.id,
-        name: existBrand.name,
-        type: existBrand.type,
-        imagePath: existBrand.imagePath,
-        imageFile: existBrand.imageFile
+    if (existProduct) {
+      setProduct({
+        id: existProduct.id,
+        name: existProduct.name,
+        type: existProduct.type,
+        imagePath: existProduct.imagePath,
+        imageFile: existProduct.imageFile
       });
     }
-  }, [existBrand]);
+  }, [existProduct]);
 
   return (
     <div className='ml-5'>
       <div className='primaryColor text-title intro-x'>
-        Update Brand {existBrand?.name}
+        Update Product {existProduct?.name}
       </div>
 
       <div className='row'>
         {
-          brand && (<BrandForm
-            initialBrandForm={brand}
+          product && (<ProductForm
+            initialProductForm={product}
   
           />)
         }
@@ -38,4 +38,4 @@ const UpdateBrandContainer = () => {
   )
 };
 
-export default UpdateBrandContainer;
+export default UpdateProductContainer;

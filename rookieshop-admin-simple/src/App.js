@@ -8,8 +8,10 @@ import Contact from "./components/Contact";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import InLineLoader from "./shared-components/InlineLoader";
 import { PRODUCT } from "./Constants/pages";
+import { CATEGORY } from "./Constants/pages";
 
 const Product = lazy(() => import('./components/Product'));
+const Category = lazy(() => import('./components/Category'));
 
 const SusspenseLoading = ({ children }) => (
   <Suspense fallback={<InLineLoader />}>
@@ -79,6 +81,9 @@ class App extends React.Component {
 
               <Route path={PRODUCT}>
                 <Product />
+              </Route>
+              <Route path={CATEGORY}>
+                <Category />
               </Route>
           </Switch>
          </SusspenseLoading>

@@ -26,6 +26,9 @@ export default class Navbar extends Component {
               <Link to="/product">
                 <li>Product</li>
               </Link>
+              <Link to="/category">
+                <li>Category</li>
+              </Link>
             </ul>
 
             <input type="text" onChange={(e) => this.props.onSearchKey(e)} />
