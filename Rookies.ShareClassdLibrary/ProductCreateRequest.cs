@@ -7,6 +7,9 @@ namespace RookieShop.Shared
     {
         [Required]
         public string Name { get; set; }
-        public ProductCategoryEnum CategoryId { get; set; }
+        public string Description { get; set; }
+        public int Price { get; set; }
+        public int CategoryId { get; set; }
+        public ProductTypeEnum Type { get; set; }
     }
 }

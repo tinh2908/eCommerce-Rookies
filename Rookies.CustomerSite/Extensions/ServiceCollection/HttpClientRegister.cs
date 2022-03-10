@@ -13,7 +13,7 @@ namespace Rookies.CustomerSite.Extensions.ServiceCollection
     {
         public static void AddCustomHttpClient(this IServiceCollection services, IConfiguration config)
         {
-            var configureClient = new Action<IServiceProvider, HttpClient>(async (provider, client) =>
+            var configureClient = new Action<IServiceProvider, HttpClient>((provider, client) =>
             {
                 var httpContextAccessor = provider.GetRequiredService<IHttpContextAccessor>();
                 //var accessToken = await httpContextAccessor

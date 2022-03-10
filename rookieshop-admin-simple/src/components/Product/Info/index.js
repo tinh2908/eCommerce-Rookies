@@ -5,12 +5,12 @@ import {
   NormalProductType,
   NormalProductTypeLabel,
   LuxuryProductType, 
-  LuxyryProductTypeLabel 
+  LuxuryProductTypeLabel 
 } from "../../../Constants/Product/ProductConstants";
 
 const Info = ({ product, handleClose }) => {
   const getProductTypeName = (id) => {
-    return id == LuxuryProductType ? LuxyryProductTypeLabel : NormalProductTypeLabel;
+    return id == LuxuryProductType ? LuxuryProductTypeLabel : NormalProductTypeLabel;
   }
 
   return (

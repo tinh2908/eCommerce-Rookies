@@ -41,6 +41,26 @@ namespace Rookies.BackEnd.Controllers
             return Ok(categoryDtos);
         }
 
+        [HttpGet("{id}")]
+        [AllowAnonymous]
+        //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
+        public ActionResult<CategoryDto> GetCategory(int id)
+        {
+            var rating = _context
+                                .Category
+                                .Where(x => x.Id == id)
+                                .FirstOrDefault();
+
+            if (rating == null)
+            {
+                return NotFound();
+            }
+
+            var categoryDtos = _mapper.Map<CategoryDto>(rating);
+
+            return Ok(categoryDtos);
+        }
+
         [HttpGet("{cateid}")]
         [AllowAnonymous]
         //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]

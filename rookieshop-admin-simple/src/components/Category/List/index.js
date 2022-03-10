@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { FunnelFill } from "react-bootstrap-icons";
 import { Search } from "react-feather";
-import ReactMultiSelectCheckboxes from "react-multiselect-checkboxes";
+
 import { Link } from "react-router-dom";
 import CategoryTable from "./CategoryTable";
-
 import { getCategoryRequest } from "../services/request"
 import {
     ACCSENDING,
@@ -22,45 +20,6 @@ const ListCategory = () => {
 
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("");
-
-    const [selectedType, setSelectedType] = useState([
-        { id: 1, label: "All", value: 0 },
-    ]);
-
-    const handleType = (selected) => {
-        if (selected.length === 0) {
-            setQuery({
-                ...query,
-                types: [],
-            });
-
-            // setSelectedType([FilterProductTypeOptions[0]]);
-            return;
-        }
-
-        const selectedAll = selected.find((item) => item.id === 1);
-
-        setSelectedType((prevSelected) => {
-            if (!prevSelected.some((item) => item.id === 1) && selectedAll) {
-                setQuery({
-                    ...query,
-                    types: [],
-                });
-
-                return [selectedAll];
-            }
-
-            const newSelected = selected.filter((item) => item.id !== 1);
-            const types = newSelected.map((item) => item.value);
-
-            setQuery({
-                ...query,
-                types,
-            });
-
-            return newSelected;
-        });
-    };
 
     const handleChangeSearch = (e) => {
         e.preventDefault();
@@ -93,41 +52,27 @@ const ListCategory = () => {
         });
     };
 
-    const fetchDataCallbackAsync = async () => {
+    const fetchDataCallbackAsync = async () =>  {
         let data = await getCategoryRequest(query);
         console.log('fetchDataCallbackAsync');
         console.log(data);
         setCategory(data);
-    }
-    useEffect(() => {
+      }
+    
+      useEffect(() => {
         async function fetchDataAsync() {
-            let result = await getCategoryRequest(query);
-            setCategory(result.data);
+          let result = await getCategoryRequest(query);
+          setCategory(result.data);
         }
-
+    
         fetchDataAsync();
-    }, [query, category]);
-
+      }, [query, category]);
     return (
         <>
             <div className="primaryColor text-title intro-x">Category List</div>
 
             <div>
                 <div className="d-flex mb-5 intro-x">
-                    <div className="d-flex align-items-center w-md mr-5">
-                        <ReactMultiSelectCheckboxes
-                            //   options={FilterProductTypeOptions}
-                            hideSearch={true}
-                            placeholderButtonLabel="Type"
-                            value={selectedType}
-                            onChange={handleType}
-                        />
-
-                        <div className="border p-2">
-                            <FunnelFill />
-                        </div>
-                    </div>
-
                     <div className="d-flex align-items-center w-ld ml-auto">
                         <div className="input-group">
                             <input

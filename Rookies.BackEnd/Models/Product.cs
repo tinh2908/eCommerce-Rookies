@@ -14,6 +14,7 @@ namespace Rookies.BackEnd.Models
         public int Price { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public int Type { get; set; }
         public bool IsDeleted { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Categories { get; set; }

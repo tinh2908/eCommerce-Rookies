@@ -17,13 +17,11 @@ namespace Rookies.BackEnd.Data.SeedData
                {
                    Id = 1,
                    Name = "Category 1",
-                   Type = (int)ProductCategoryEnum.Normal
                },
                new Category
                {
                    Id = 2,
                    Name = "Category 2",
-                   Type = (int)ProductCategoryEnum.Normal
                });
         }
     }

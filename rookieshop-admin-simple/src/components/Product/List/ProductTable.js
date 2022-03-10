@@ -12,7 +12,7 @@ import {
   NormalProductType,
   NormalProductTypeLabel,
   LuxuryProductType, 
-  LuxyryProductTypeLabel 
+  LuxuryProductTypeLabel 
 } from "../../../Constants/Product/ProductConstants";
 import { DisableProductRequest } from "../services/request"
 
@@ -50,7 +50,7 @@ const ProductTable = ({
   };
 
   const getProductTypeName = (id) => {
-    return id == LuxuryProductType ? LuxyryProductTypeLabel : NormalProductTypeLabel;
+    return id == LuxuryProductType ? LuxuryProductTypeLabel : NormalProductTypeLabel;
   }
 
   const handleShowDisable = async (id) => {
@@ -113,7 +113,6 @@ const ProductTable = ({
       }
     );
   };
-
   return (
     <>
       <Table

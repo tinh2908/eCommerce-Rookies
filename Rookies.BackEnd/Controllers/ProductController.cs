@@ -14,6 +14,7 @@ using Rookies.ShareClassdLibrary.Dto;
 using AutoMapper;
 using System.Threading;
 using Rookies.BackEnd.Extension;
+using RookieShop.Shared;
 
 namespace Rookies.BackEnd.Controllers
 {
@@ -84,7 +85,8 @@ namespace Rookies.BackEnd.Controllers
                 Description = product.Description,
                 CreatedDate = product.CreatedDate,
                 UpdatedDate = product.UpdatedDate,
-                CategoryId = (int)product.CategoryId
+                Type = (int)product.Type,
+                CategoryId = product.CategoryId
             };
 
             return productVM;
@@ -92,14 +94,15 @@ namespace Rookies.BackEnd.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult<ProductDto>> PostProduct(string name, int price, string description)
+        public async Task<ActionResult<ProductDto>> PostProduct([FromForm] ProductCreateRequest productCreateRequest)
         {
             var product = new Product
             {
-                Name = name,
-                Price = price,
-                CreatedDate = DateTime.Now,
-                Description = description
+                Name = productCreateRequest.Name,
+                Description = productCreateRequest.Description,
+                Price = productCreateRequest.Price,
+                Type = (int)productCreateRequest.Type,
+                CategoryId = productCreateRequest.CategoryId
             };
             _context.Product.Add(product);
             await _context.SaveChangesAsync();
@@ -110,7 +113,7 @@ namespace Rookies.BackEnd.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutProduct(int id)
+        public async Task<ActionResult> PutProduct(int id, [FromForm] ProductCreateRequest productCreateRequest)
         {
             var product = await _context.Product.FindAsync(id);
 
@@ -118,6 +121,15 @@ namespace Rookies.BackEnd.Controllers
             {
                 return NotFound();
             }
+
+            if (!string.IsNullOrEmpty(productCreateRequest.Name))
+            {
+                product.Name = productCreateRequest.Name;
+                product.Description = productCreateRequest.Description;
+                product.Price = productCreateRequest.Price;
+            }
+
+            product.Type = (int)productCreateRequest.Type;
             _context.Product.Update(product);
             await _context.SaveChangesAsync();
 
@@ -150,12 +162,12 @@ namespace Rookies.BackEnd.Controllers
                     b.Name.Contains(productCriteriaDto.Search));
             }
 
-            if (productCriteriaDto.CategoryId != null &&
-                productCriteriaDto.CategoryId.Count() > 0 &&
-               !productCriteriaDto.CategoryId.Any(x => x == (int)ProductCategoryEnum.All))
+            if (productCriteriaDto.Types != null &&
+                productCriteriaDto.Types.Count() > 0 &&
+               !productCriteriaDto.Types.Any(x => x == (int)ProductTypeEnum.All))
             {
                 productQuery = productQuery.Where(x =>
-                    productCriteriaDto.CategoryId.Any(t => t == x.CategoryId));
+                    productCriteriaDto.Types.Any(t => t == x.Type));
             }
 
             return productQuery;

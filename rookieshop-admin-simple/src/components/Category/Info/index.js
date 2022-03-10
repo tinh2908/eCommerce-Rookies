@@ -27,7 +27,6 @@ const Info = ({ category, handleClose }) => {
               <div className='col-4'>Name:</div>
               <div>{category.name}</div>
             </div>
-
           </div>
         </Modal.Body>
       </Modal>

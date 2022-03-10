@@ -20,6 +20,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 10000,
                     Description = "2021 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 1
                 },
                 new Product
@@ -29,6 +30,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 20000,
                     Description = "2022 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 1
                 },
                 new Product
@@ -38,6 +40,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 30000,
                     Description = "2023 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 1
                 }, new Product
                 {
@@ -46,6 +49,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 40000,
                     Description = "2024 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 2
                 }, new Product
                 {
@@ -54,6 +58,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 50000,
                     Description = "2025 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 2
                 }, new Product
                 {
@@ -70,6 +75,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 70000,
                     Description = "2027 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 1
                 }, new Product
                 {
@@ -78,6 +84,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 80000,
                     Description = "2028 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 1
                 }, new Product
                 {
@@ -86,6 +93,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 90000,
                     Description = "2029 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 1
                 },
                 new Product
@@ -95,6 +103,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 100000,
                     Description = "2030 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Normal,
                     CategoryId = 1
                 },
                 new Product
@@ -104,6 +113,7 @@ namespace Rookies.BackEnd.Data.SeedData
                     Price = 110000,
                     Description = "2031 Product",
                     CreatedDate = DateTime.Now,
+                    Type = (int)ProductTypeEnum.Luxury,
                     CategoryId = 1
                 });
         }

@@ -1,6 +1,6 @@
 ﻿namespace Rookies.ShareClassdLibrary.Enum
 {
-    public enum ProductCategoryEnum
+    public enum ProductTypeEnum
     {
         All = 0,
         Normal = 1,

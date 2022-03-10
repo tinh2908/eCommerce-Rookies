@@ -2,6 +2,6 @@
 {
     public class ProductCriteriaDto : BaseQueryCriteriaDto
     {
-        public int[] CategoryId { get; set; }
+        public int[] Types { get; set; }
     }
 }
