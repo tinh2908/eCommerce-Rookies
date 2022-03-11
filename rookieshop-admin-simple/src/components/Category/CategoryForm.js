@@ -5,9 +5,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { NotificationManager } from 'react-notifications';
 
 import TextField from '../../shared-components/FormInputs/TextField';
-import SelectField from '../../shared-components/FormInputs/SelectField';
 import { CATEGORY } from '../../Constants/pages';
-import { UpdateCategoryRequest } from "./services/request";
+import { createCategoryRequest, UpdateCategoryRequest } from "./services/request";
 
 const initialFormValues = {
     name: '',
@@ -46,7 +45,16 @@ const CategoryFormContainer = ({ initialCategoryForm = {
 
     const updateCategoryAsync = async (form) => {
         console.log('update Category async');
-        let data = await updateCategoryAsync(form.formValues);
+        let data = await UpdateCategoryRequest(form.formValues);
+        if (data)
+        {
+            handleResult(true, data.name);
+        }
+    }
+
+    const createCategoryAsync = async (form) => {  
+        console.log('create Category async');
+        let data = await createCategoryRequest(form.formValues);
         if (data)
         {
             handleResult(true, data.name);
@@ -65,6 +73,9 @@ const CategoryFormContainer = ({ initialCategoryForm = {
                     if (isUpdate) {
                         updateCategoryAsync({ formValues: values });
                     }
+                    else {
+                        createCategoryAsync({ formValues: values});
+                    }
             
                     setLoading(false);
                 }, 1000);
@@ -76,8 +87,7 @@ const CategoryFormContainer = ({ initialCategoryForm = {
                         name="name" 
                         label="Name" 
                         placeholder="input Category name" 
-                        isrequired 
-                        disabled={isUpdate ? true : false} />
+                        isrequired/>
                     
                     <div className="d-flex">
                         <div className="ml-auto">

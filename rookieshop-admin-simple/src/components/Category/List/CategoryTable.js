@@ -93,7 +93,7 @@ const CategoryTable = ({
 
   const history = useHistory();
   const handleEdit = (id) => {
-    const existCategory = categories?.items.find(item => item.id === Number(id));
+    const existCategory = categories?.find(item => item.id === Number(id));
     history.push(
       EDIT_CATEGORY_ID(id),
       {

@@ -35,14 +35,13 @@ namespace Rookies.CustomerSite.Pages.Product
         [BindProperty(SupportsGet = true)]
         public int PageIndex { get; set; }
 
-        public async Task OnGetAsync(string sortOrder,
-            string currentFilter, string searchString, int? pageIndex)
+        public async Task OnGetAsync()
         {
             var productCriteriaDto = new ProductCriteriaDto()
             {
-                Search = searchString,
+                Search = Products.Search,
                 SortOrder = SortOrderEnum.Accsending,
-                Page = pageIndex ?? 1,
+                Page = Products.Page,
                 Limit = int.Parse(_config[ConfigurationConstants.PAGING_LIMIT])
             };
             var pageProducts = await _productService.GetProductAsync(productCriteriaDto);

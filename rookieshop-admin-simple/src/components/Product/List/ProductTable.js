@@ -20,6 +20,7 @@ const columns= [
   { columnName: "id", columnValue: "Id" },
   { columnName: "name", columnValue: "Name" },
   { columnName: "price", columnValue: "Price" },
+  { columnName: "description", columnValue: "Description" },
   { columnName: "type", columnValue: "Type" }
 ];
 
@@ -130,6 +131,7 @@ const ProductTable = ({
             <td>{data.id}</td>
             <td>{data.name}</td>
             <td>{data.price}</td>
+            <td>{data.description}</td>
             <td>{getProductTypeName(data.type)}</td>
 
             <td className="d-flex">

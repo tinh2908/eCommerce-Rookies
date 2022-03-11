@@ -110,6 +110,10 @@ const ProductFormContainer = ({ initialProductForm = {
                         name="price" 
                         label="Price"
                         />
+                    <TextField 
+                        name="description" 
+                        label="Description"
+                        />    
                     <SelectField 
                         name="categoryid" 
                         label="Category"

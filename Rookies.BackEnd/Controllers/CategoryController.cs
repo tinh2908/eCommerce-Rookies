@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rookies.BackEnd.Data;
+using Rookies.BackEnd.Models;
 using Rookies.ShareClassdLibrary.Dto.Category;
 using Rookies.ShareClassdLibrary.Dto.ProductbyCate;
+using RookieShop.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +61,24 @@ namespace Rookies.BackEnd.Controllers
             var categoryDtos = _mapper.Map<CategoryDto>(rating);
 
             return Ok(categoryDtos);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ActionResult<CategoryDto>> PostCategory([FromForm] CategoryCreateRequest categoryCreateRequeset)
+        {
+            var category = new Category
+            {
+                Name = categoryCreateRequeset.Name,
+            };
+            _context.Category.Add(category);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetCategory", new { id = category.Id },
+                new CategoryDto
+                {
+                    Name = category.Name
+                });
         }
 
         [HttpGet("{cateid}")]
