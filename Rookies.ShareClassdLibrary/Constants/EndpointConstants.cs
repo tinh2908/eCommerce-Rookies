@@ -5,5 +5,6 @@
         public static string GET_PRODUCTS = "api/product";
         public static string GET_CATEGORIES = "api/category";
         public static string GET_RATING = "api/rating";
+        public static string GET_PRODUCTSBYCATE = "api/productbycate";
     }
 }

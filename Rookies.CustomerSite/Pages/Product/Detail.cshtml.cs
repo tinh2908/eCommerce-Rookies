@@ -35,10 +35,6 @@ namespace Rookies.CustomerSite.Pages.Product
 
         [BindProperty(SupportsGet = true)]
         public ProductVM Product { get; set; }
-        //[BindProperty]
-        //public int ratingscore { get; set; }
-        //[BindProperty]
-        //public int productid { get; set; }
         [BindProperty]
         public RatingVM Rating { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)

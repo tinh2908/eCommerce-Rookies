@@ -51,6 +51,13 @@ html {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    color: #af6c08;
+}
+
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
@@ -62,8 +69,6 @@ html {
 }
 
 body {
-    /* Margin bottom by footer height */
-    margin-bottom: 20px;
     height: 100%;
     background-image: url('../../../../Image/img/background-two-side-red-vector-1740195.jpg');
     background-repeat: no-repeat;

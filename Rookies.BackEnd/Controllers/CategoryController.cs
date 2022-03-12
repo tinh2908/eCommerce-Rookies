@@ -81,28 +81,6 @@ namespace Rookies.BackEnd.Controllers
                 });
         }
 
-        [HttpGet("{cateid}")]
-        [AllowAnonymous]
-        //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
-
-        public ActionResult<ProductbyCateDto> GetProductByCategory(int cateid)
-        {
-            var product = _context
-                                .Product
-                                .Where(x => x.CategoryId == cateid)
-                                //.Include(p => p.Categories)
-                                .AsQueryable();
-
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            var categoryDtos = _mapper.Map<IEnumerable<ProductbyCateDto>>(product);
-
-            return Ok(categoryDtos);
-        }
-
         [HttpPut("{id}")]
         public async Task<ActionResult> PutCategory(int id)
         {

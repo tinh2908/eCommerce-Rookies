@@ -44,7 +44,7 @@ namespace Rookies.CustomerSite.Services
         public async Task<IList<ProductbyCateDto>> GetProductByCateAsync(int cateid)
         {
             var client = _clientFactory.CreateClient(ServiceConstants.BACK_END_NAMED_CLIENT);
-            var response = await client.GetAsync($"{EndpointConstants.GET_CATEGORIES}\\{cateid}");
+            var response = await client.GetAsync($"{EndpointConstants.GET_PRODUCTSBYCATE}\\{cateid}");
             response.EnsureSuccessStatusCode();
             var pagedCategories = await response.Content.ReadAsAsync<IList<ProductbyCateDto>>();
             return pagedCategories;
