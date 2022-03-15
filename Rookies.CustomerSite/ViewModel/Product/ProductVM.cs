@@ -11,6 +11,8 @@ namespace Rookies.CustomerSite.ViewModel.Product
         public int Price { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
+        public string ImagePath { get; set; }
         public int CategoryId { get; set; }
+       
     }
 }

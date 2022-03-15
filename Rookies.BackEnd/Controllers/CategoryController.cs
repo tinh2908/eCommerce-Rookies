@@ -33,6 +33,7 @@ namespace Rookies.BackEnd.Controllers
         {
             var category = _context
                                .Category
+                               .Where(x => !x.IsDeleted)
                                .AsQueryable();
 
             if (category == null)
@@ -50,7 +51,7 @@ namespace Rookies.BackEnd.Controllers
         {
             var rating = _context
                                 .Category
-                                .Where(x => x.Id == id)
+                                .Where(x => !x.IsDeleted && x.Id == id)
                                 .FirstOrDefault();
 
             if (rating == null)
@@ -104,7 +105,7 @@ namespace Rookies.BackEnd.Controllers
             {
                 return NotFound();
             }
-
+            category.IsDeleted = true;
             _context.Category.Update(category);
             await _context.SaveChangesAsync();
 

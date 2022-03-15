@@ -66,7 +66,7 @@ const ListCategory = () => {
         }
     
         fetchDataAsync();
-      }, [query, category]);
+      }, [query]);
     return (
         <>
             <div className="primaryColor text-title intro-x">Category List</div>

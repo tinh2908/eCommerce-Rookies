@@ -7,8 +7,7 @@
         font-size: 16px;
     }
 }
-menubutton {
-    display: block; /* Hidden by default */
+.menubutton {
     position: fixed; /* Fixed/sticky position */
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
@@ -23,12 +22,14 @@ menubutton {
     #menubutton:hover {
         background-color: #e59324; /* Add a dark-grey background on hover */
     }
-#menu {
-    height: 100%;
-    width: 15%;
+.menu {
+    width: 10%;
     position: fixed;
     z-index: 999;
-
+    background-color: #a9a9a9ba;
+    color: #af6c08;
+    top: 20%;
+    bottom:20%
 }
 
 

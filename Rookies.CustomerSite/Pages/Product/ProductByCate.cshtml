@@ -4,17 +4,22 @@
 @{
     ViewData["Title"] = "ProductByCate";
 }
+
+<h2>Products</h2>
 <div class="row">
     @foreach (var item in Model.Product)
     {
-        <div class="col-6 col-xl-3 col-lg-4 col-sm-6" style="padding-bottom: 25px">
+        <div class="col-6 col-xl-4 col-lg-4 col-sm-6" style="padding-bottom: 25px">
             <div class="card">
                 <div class="card-header">
-                    <a class="card-title" asp-page="./Detail" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Name)</a>
+                    <a asp-page="./Detail" asp-route-id="@item.Id">
+                        <img class="card-img" src="@item.ImagePath" asp-append-version="true" />
+                    </a>
                 </div>
                 <div class="card-body">
-                    <h3 class="card-text"> @Html.DisplayFor(modelItem => item.Price)</h3>
-                    <p class="card-text"> @Html.DisplayFor(modelItem => item.Description)</p>
+                    <h2 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h2>
+                    <h3 class="card-text">@Html.DisplayFor(modelItem => item.Price)</h3>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
                 </div>
             </div>
         </div>

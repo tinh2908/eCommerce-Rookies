@@ -11,6 +11,7 @@ namespace Rookies.ShareClassdLibrary.Dto.Product
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public int Type { get; set; }
+        public string ImagePath { get; set; }
         public int CategoryId { get; set; }
     }
 }

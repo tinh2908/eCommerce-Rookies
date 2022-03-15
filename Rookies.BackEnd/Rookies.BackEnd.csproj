@@ -69,4 +69,8 @@
     <None Include="Views\Shared\_ValidationSummary.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\image\" />
+  </ItemGroup>
+
 </Project>

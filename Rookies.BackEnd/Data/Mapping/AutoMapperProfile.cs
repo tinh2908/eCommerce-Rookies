@@ -12,9 +12,19 @@ namespace RookieShop.Backend.Data.Mapping
     {
         public AutoMapperProfile()  
         {
-            CreateMap<Product, ProductDto>();
+            CreateMap<Product, ProductDto>()
+                 .ForMember(src => src.ImagePath,
+                           opts => opts
+                                    .MapFrom(src => ImageHelper
+                                                        .GetFileUrl(src.ImageName)
+                                            ));
             CreateMap<Category, CategoryDto>();
-            CreateMap<Product, ProductbyCateDto>();
+            CreateMap<Product, ProductbyCateDto>()
+                 .ForMember(src => src.ImagePath,
+                           opts => opts
+                                    .MapFrom(src => ImageHelper
+                                                        .GetFileUrl(src.ImageName)
+                                            ));
             CreateMap<Rating, RatingDto>();
         }
     }

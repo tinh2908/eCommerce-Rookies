@@ -110,7 +110,7 @@ const ListProduct = () => {
     }
 
     fetchDataAsync();
-  }, [query, product]);
+  }, [query]);
 
   return (
     <>
@@ -147,7 +147,7 @@ const ListProduct = () => {
           </div>
 
           <div className="d-flex align-items-center ml-3">
-            <Link to="/product/create" type="button" className="btn btn-danger">
+            <Link to="/product/create" type="button" className="btn btn-info">
               Create new Product
             </Link>
           </div>

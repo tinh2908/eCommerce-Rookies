@@ -121,7 +121,7 @@ const ProductFormContainer = ({ initialProductForm = {
                         isrequired />
                     <div className="d-flex">
                         <div className="ml-auto">
-                            <button className="btn btn-danger"
+                            <button className="btn btn-info"
                                 type="submit" disabled={loading}
                             >
                                 Save {(loading) && <img src="/oval.svg" className='w-4 h-4 ml-2 inline-block' />}

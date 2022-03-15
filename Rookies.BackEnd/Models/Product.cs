@@ -15,6 +15,7 @@ namespace Rookies.BackEnd.Models
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public int Type { get; set; }
+        public string ImageName { get; set; }
         public bool IsDeleted { get; set; }
         public int CategoryId { get; set; }
         public virtual Category Categories { get; set; }

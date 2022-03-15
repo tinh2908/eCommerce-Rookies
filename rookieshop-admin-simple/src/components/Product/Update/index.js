@@ -16,6 +16,7 @@ const UpdateProductContainer = () => {
         type: existProduct.type,
         price: existProduct.price,
         description: existProduct.description,
+        categoryid: existProduct.categoryid,
         imagePath: existProduct.imagePath,
         imageFile: existProduct.imageFile
       });

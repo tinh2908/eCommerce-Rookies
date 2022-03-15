@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Rookies.CustomerSite</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -33,9 +33,9 @@
                 </div>
             </div>
         </nav>
-        <nav class="shadow mb-4 position-fixed">
+        <div class="shadow mb-4 position-fixed">
             @await Component.InvokeAsync("Category")
-        </nav>
+        </div>
     </header>
     <div class="container min-vh-100">
         <main role="main" class="pb-3">
@@ -64,7 +64,6 @@
                     <i class="fab fa-google"></i>
                 </a>
             </div>
-            <!-- Right -->
         </div>
         <div>
             <div class="container text-center text-md-start">

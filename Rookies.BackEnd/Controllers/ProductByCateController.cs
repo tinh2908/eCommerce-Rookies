@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Rookies.BackEnd.Data;
 using Rookies.ShareClassdLibrary.Dto.ProductbyCate;
 using System;
@@ -39,9 +40,9 @@ namespace Rookies.BackEnd.Controllers
                 return NotFound();
             }
 
-            var categoryDtos = _mapper.Map<IEnumerable<ProductbyCateDto>>(product);
+            var productbyCateDtos = _mapper.Map<IEnumerable<ProductbyCateDto>>(product);
 
-            return Ok(categoryDtos);
+            return Ok(productbyCateDtos);
         }
     }
 }

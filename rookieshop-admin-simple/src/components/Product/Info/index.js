@@ -52,13 +52,13 @@ const Info = ({ product, handleClose }) => {
               <div className='col-4'>Type:</div>
               <div>{getProductTypeName(product.type)}</div>
             </div>
-{/* 
+
             <div className='row -intro-y'>
               <div className='col-4'>Image:</div>
               <div>
-                <img src={product.imagePath} className='object-center w-full rounded-md' />
+                <img src={product.imagePath} className='container object-center w-full rounded-md' />
               </div>
-            </div> */}
+            </div>
 
           </div>
         </Modal.Body>

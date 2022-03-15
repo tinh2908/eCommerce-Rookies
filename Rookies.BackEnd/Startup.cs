@@ -13,6 +13,7 @@ using Rookies.Backend.Security.Authorization.Handlers;
 using Rookies.Backend.Security.Authorization.Requirements;
 using Rookies.BackEnd.Data;
 using Rookies.BackEnd.Models;
+using Rookies.BackEnd.Services;
 using Rookies.ShareClassdLibrary.Constants;
 using System;
 using System.Collections.Generic;
@@ -106,6 +107,7 @@ namespace Rookies.BackEnd
                     policy.Requirements.Add(new AdminRoleRequirement()));
             });
             services.AddSingleton<IAuthorizationHandler, AdminRoleHandler>();
+            services.AddTransient<IFileStorageService, FileStorageService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddCors(options =>
             {

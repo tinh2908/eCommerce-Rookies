@@ -15,6 +15,7 @@ using AutoMapper;
 using System.Threading;
 using Rookies.BackEnd.Extension;
 using RookieShop.Shared;
+using Rookies.BackEnd.Services;
 
 namespace Rookies.BackEnd.Controllers
 {
@@ -24,11 +25,14 @@ namespace Rookies.BackEnd.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-
-        public ProductController(ApplicationDbContext context, IMapper mapper)
+        private readonly IFileStorageService _fileStorageService;
+        public ProductController(ApplicationDbContext context, 
+            IFileStorageService fileStorageService,
+            IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
+            _fileStorageService = fileStorageService;
         }
 
         [HttpGet]
@@ -86,6 +90,7 @@ namespace Rookies.BackEnd.Controllers
                 CreatedDate = product.CreatedDate,
                 UpdatedDate = product.UpdatedDate,
                 Type = (int)product.Type,
+                ImagePath = _fileStorageService.GetFileUrl(product.ImageName),
                 CategoryId = product.CategoryId
             };
 
@@ -102,8 +107,15 @@ namespace Rookies.BackEnd.Controllers
                 Description = productCreateRequest.Description,
                 Price = productCreateRequest.Price,
                 Type = (int)productCreateRequest.Type,
+                ImageName = string.Empty,
                 CategoryId = productCreateRequest.CategoryId
             };
+
+            if (productCreateRequest.ImageFile != null)
+            {
+                product.ImageName = await _fileStorageService.SaveFileAsync(productCreateRequest.ImageFile);
+            }
+
             _context.Product.Add(product);
             await _context.SaveChangesAsync();
 
@@ -130,6 +142,10 @@ namespace Rookies.BackEnd.Controllers
             }
 
             product.Type = (int)productCreateRequest.Type;
+            if (productCreateRequest.ImageFile != null)
+            {
+                product.ImageName = await _fileStorageService.SaveFileAsync(productCreateRequest.ImageFile);
+            }
             _context.Product.Update(product);
             await _context.SaveChangesAsync();
 
