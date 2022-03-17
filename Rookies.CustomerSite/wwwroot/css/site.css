@@ -47,13 +47,22 @@ html {
 
 .card-header {
     background-color: #a9a9a9ba;
+    min-height: 250px;
 }
+
+    .card-header * {
+        margin-top: 0;
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-left: auto;
+    }
 
 .card-body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem;
     color: #af6c08;
+    min-height: 220px
 }
 
 button.accept-policy {

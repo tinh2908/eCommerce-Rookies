@@ -13,8 +13,7 @@ const initialFormValues = {
 };
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Required'),
-    type: Yup.string().required('Required')
+    name: Yup.string().required('Required')
 });
 
 const CategoryFormContainer = ({ initialCategoryForm = {

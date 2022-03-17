@@ -108,6 +108,7 @@ namespace Rookies.BackEnd.Controllers
                 Price = productCreateRequest.Price,
                 Type = (int)productCreateRequest.Type,
                 ImageName = string.Empty,
+                CreatedDate = DateTime.Now,
                 CategoryId = productCreateRequest.CategoryId
             };
 
@@ -139,6 +140,7 @@ namespace Rookies.BackEnd.Controllers
                 product.Name = productCreateRequest.Name;
                 product.Description = productCreateRequest.Description;
                 product.Price = productCreateRequest.Price;
+                product.UpdatedDate = DateTime.Now;
             }
 
             product.Type = (int)productCreateRequest.Type;

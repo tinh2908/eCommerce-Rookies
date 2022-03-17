@@ -49,17 +49,17 @@ namespace Rookies.BackEnd.Controllers
         //[Authorize(Policy = SecurityConstants.ADMIN_ROLE_POLICY)]
         public ActionResult<CategoryDto> GetCategory(int id)
         {
-            var rating = _context
+            var category = _context
                                 .Category
                                 .Where(x => !x.IsDeleted && x.Id == id)
                                 .FirstOrDefault();
 
-            if (rating == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            var categoryDtos = _mapper.Map<CategoryDto>(rating);
+            var categoryDtos = _mapper.Map<CategoryDto>(category);
 
             return Ok(categoryDtos);
         }
