@@ -5,7 +5,7 @@ import { CREATE_PRODUCT, PRODUCT, EDIT_PRODUCT } from '../../Constants/pages';
 
 const CreateProduct = lazy(() => import("./Create"));
 const ListProduct = lazy(() => import("./List"));
-const UpdateProduct = lazy(() => import("./Update"))
+const UpdateProduct = lazy(() => import("./Update"));
 
 const Product = () => {
     return (

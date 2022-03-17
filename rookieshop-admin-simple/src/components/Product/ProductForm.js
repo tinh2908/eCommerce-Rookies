@@ -119,6 +119,10 @@ const ProductFormContainer = ({ initialProductForm = {
                         label="Category"
                         options={ProductCategoryOptions} 
                         isrequired />
+                    <FileUpload 
+                        name="imageFile" 
+                        label="Image" 
+                        image={actions.values.imagePath} />    
                     <div className="d-flex">
                         <div className="ml-auto">
                             <button className="btn btn-info"

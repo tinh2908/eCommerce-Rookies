@@ -21,6 +21,6 @@ const Category = () => {
             </Route>
         </Switch>
     )
-}
+};
 
 export default Category;

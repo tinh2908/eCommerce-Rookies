@@ -83,7 +83,8 @@ namespace Rookies.BackEnd.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> PutCategory(int id)
+        [AllowAnonymous]
+        public async Task<ActionResult> PutCategory(int id, [FromForm] CategoryCreateRequest categoryCreateRequest)
         {
             var category = await _context.Category.FindAsync(id);
 
@@ -91,6 +92,12 @@ namespace Rookies.BackEnd.Controllers
             {
                 return NotFound();
             }
+
+            if (!string.IsNullOrEmpty(categoryCreateRequest.Name))
+            {
+                category.Name = categoryCreateRequest.Name;
+            }
+
             _context.Category.Update(category);
             await _context.SaveChangesAsync();
 
@@ -98,6 +105,7 @@ namespace Rookies.BackEnd.Controllers
         }
 
         [HttpDelete("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _context.Category.FindAsync(id);

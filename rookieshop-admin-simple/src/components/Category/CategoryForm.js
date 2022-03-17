@@ -9,7 +9,7 @@ import { CATEGORY } from '../../Constants/pages';
 import { createCategoryRequest, UpdateCategoryRequest } from "./services/request";
 
 const initialFormValues = {
-    name: '',
+    name: ''
 };
 
 const validationSchema = Yup.object().shape({
@@ -74,9 +74,9 @@ const CategoryFormContainer = ({ initialCategoryForm = {
                         updateCategoryAsync({ formValues: values });
                     }
                     else {
-                        createCategoryAsync({ formValues: values});
+                        createCategoryAsync({ formValues: values });
                     }
-            
+
                     setLoading(false);
                 }, 1000);
             }}
@@ -86,12 +86,10 @@ const CategoryFormContainer = ({ initialCategoryForm = {
                     <TextField 
                         name="name" 
                         label="Name" 
-                        placeholder="input Category name" 
-                        isrequired/>
-                    
+                        placeholder="Input Category name" /> 
                     <div className="d-flex">
                         <div className="ml-auto">
-                            <button className="btn btn-danger"
+                            <button className="btn btn-info"
                                 type="submit" disabled={loading}
                             >
                                 Save {(loading) && <img src="/oval.svg" className='w-4 h-4 ml-2 inline-block' />}
